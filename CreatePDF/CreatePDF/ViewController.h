@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)showPdf:(UIButton *)sender;
+
+
 
 @end
 
