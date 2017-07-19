@@ -88,7 +88,7 @@
             
             //For Column - 2
             int column2Width = Column2 - Column1;
-            [objMyPDF addImage:[UIImage imageNamed:@"bangles.png"] withRect:CGRectMake(Column1 + 5 , y+2, column2Width-10, 30)];
+            [objMyPDF addImage:[UIImage imageNamed:@"ring.jpg"] withRect:CGRectMake(Column1 + 5 , y+2, column2Width-10, 30)];
             
             //For Column - 3
             NSString *strCompany = arrayNotesForPDF[k];
