@@ -1,5 +1,12 @@
 # DrawPDF
 
+# Requirements
+
+Xcode 8+                                            
+Swift 3.0, Swift 4.0                                 
+iOS 8+                                  
+ARC                                                  
+
 ## Basic Usage ##
 ### DRAG & DROP VPDFTableCreation FOLDER TO YOUR PROJECT ###
 #### Make array of row and ColumnData Like Below Formate ####
