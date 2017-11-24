@@ -1,7 +1,7 @@
 # DrawPDF
 
 ## Basic Usage ##
-
+### DRAG & DROP VPDFTableCreation FOLDER TO YOUR PROJECT ###
 #### Make array of row and ColumnData Like Below Formate ####
 ```[[1,'abc',.....],[2,'abc',...],......]
 var finalArray = [[String]]()
