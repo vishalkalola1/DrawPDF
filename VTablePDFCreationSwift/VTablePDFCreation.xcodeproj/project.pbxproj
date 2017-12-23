@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C92C1ABA1FEE4BA100A9A209 /* VPDFTableCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92C1AB61FEE4BA100A9A209 /* VPDFTableCreation.swift */; };
 		C9C6716A1FC587BC0097E836 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C671691FC587BC0097E836 /* AppDelegate.swift */; };
 		C9C6716C1FC587BC0097E836 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6716B1FC587BC0097E836 /* ViewController.swift */; };
 		C9C6716F1FC587BC0097E836 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C6716D1FC587BC0097E836 /* Main.storyboard */; };
 		C9C671711FC587BC0097E836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C671701FC587BC0097E836 /* Assets.xcassets */; };
 		C9C671741FC587BC0097E836 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C671721FC587BC0097E836 /* LaunchScreen.storyboard */; };
+		C9EF597F1FEE870B003A8992 /* VPDFTableCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF597E1FEE870B003A8992 /* VPDFTableCreation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C92C1AB61FEE4BA100A9A209 /* VPDFTableCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPDFTableCreation.swift; sourceTree = "<group>"; };
 		C9C671661FC587BC0097E836 /* VTablePDFCreation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VTablePDFCreation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C671691FC587BC0097E836 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C6716B1FC587BC0097E836 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +23,7 @@
 		C9C671701FC587BC0097E836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9C671731FC587BC0097E836 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9C671751FC587BC0097E836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9EF597E1FEE870B003A8992 /* VPDFTableCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPDFTableCreation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,15 +37,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C92C1AB51FEE4BA100A9A209 /* VPDFTableCreation */ = {
-			isa = PBXGroup;
-			children = (
-				C92C1AB61FEE4BA100A9A209 /* VPDFTableCreation.swift */,
-			);
-			name = VPDFTableCreation;
-			path = ../../VPDFTableCreation;
-			sourceTree = "<group>";
-		};
 		C9C6715D1FC587BC0097E836 = {
 			isa = PBXGroup;
 			children = (
@@ -65,7 +56,7 @@
 		C9C671681FC587BC0097E836 /* VTablePDFCreation */ = {
 			isa = PBXGroup;
 			children = (
-				C92C1AB51FEE4BA100A9A209 /* VPDFTableCreation */,
+				C9EF597D1FEE870B003A8992 /* Source */,
 				C9C671691FC587BC0097E836 /* AppDelegate.swift */,
 				C9C6716B1FC587BC0097E836 /* ViewController.swift */,
 				C9C6716D1FC587BC0097E836 /* Main.storyboard */,
@@ -74,6 +65,15 @@
 				C9C671751FC587BC0097E836 /* Info.plist */,
 			);
 			path = VTablePDFCreation;
+			sourceTree = "<group>";
+		};
+		C9EF597D1FEE870B003A8992 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C9EF597E1FEE870B003A8992 /* VPDFTableCreation.swift */,
+			);
+			name = Source;
+			path = ../../Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C92C1ABA1FEE4BA100A9A209 /* VPDFTableCreation.swift in Sources */,
+				C9EF597F1FEE870B003A8992 /* VPDFTableCreation.swift in Sources */,
 				C9C6716C1FC587BC0097E836 /* ViewController.swift in Sources */,
 				C9C6716A1FC587BC0097E836 /* AppDelegate.swift in Sources */,
 			);
