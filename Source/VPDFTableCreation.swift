@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Foundation
 
 struct PageInfo {
     var PagePadding : CGFloat = 20.0
     var ColumnDataPadding : CGFloat = 3.0
 }
 
-class VPDFTableCreation: NSObject {
+public class VPDFTableCreation: NSObject {
     
     private var pageSize = CGSize()
     private var pdfPath = String()
@@ -21,7 +22,11 @@ class VPDFTableCreation: NSObject {
     
     //MARK: =================  PDF Creation  =======================
     
-    func CreatePDFAndSaveDocumentDirectory(pdfName:String, width:CGFloat, height:CGFloat) {
+    public override init() {
+        super.init()
+    }
+    
+    open func CreatePDFAndSaveDocumentDirectory(pdfName:String, width:CGFloat, height:CGFloat) {
         pageSize = CGSize(width: width, height: height)
         let newPDFName = "\(pdfName).pdf"
         var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -31,28 +36,26 @@ class VPDFTableCreation: NSObject {
         beginPDFPage()
     }
     
-    func getPDFFile() -> String {
+    open func getPDFFile() -> String {
         return pdfPath
     }
     
-    
-//MARK: =================  PDF Draw  ================================================
-    private func beginPDFPage() {
+    fileprivate func beginPDFPage() {
         UIGraphicsBeginPDFPageWithInfo(CGRect.init(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
     }
     
-    private func finishPDF() {
+    fileprivate func finishPDF() {
         UIGraphicsEndPDFContext();
     }
     
-    private func drawTopLine(yPOS:CGFloat) -> CGPoint {
+    fileprivate func drawTopLine(yPOS:CGFloat) -> CGPoint {
         let from = CGPoint(x: pageInfo.PagePadding, y: yPOS)
         let to = CGPoint(x: pageSize.width - pageInfo.PagePadding, y: yPOS)
         drawLine(from: from, to: to)
         return to
     }
     
-    private func drawColumn(_ ColumnPositionY: CGFloat, EachColumnWidth:[Int]){
+    fileprivate func drawColumn(_ ColumnPositionY: CGFloat, EachColumnWidth:[Int]){
         var ColumnPositionX = Int()
         for i in 0...EachColumnWidth.count {
             if i == 0{
@@ -66,11 +69,11 @@ class VPDFTableCreation: NSObject {
         }
     }
     
-    private func drawText(_ text: String, Frame: CGRect, withAttributes:[NSAttributedStringKey : Any]) {
+    fileprivate func drawText(_ text: String, Frame: CGRect, withAttributes:[NSAttributedStringKey : Any]) {
         text.draw(in: Frame, withAttributes:withAttributes)
     }
     
-    func DrawPDF(TotalData:[[String]],headerData:[String],EachColumnWidth:[Int], fontSize: Float, textAlignment alignment: NSTextAlignment,Viewcontroller:UIViewController)  {
+    open func DrawPDF(TotalData:[[String]],headerData:[String],EachColumnWidth:[Int], fontSize: Float, textAlignment alignment: NSTextAlignment,Viewcontroller:UIViewController)  {
         let sum = EachColumnWidth.reduce(0, +)
         if sum != Int(pageSize.width) - Int(pageInfo.PagePadding*2)
         {
@@ -142,7 +145,7 @@ class VPDFTableCreation: NSObject {
         finishPDF()
     }
     
-    private func FindStringHeightWithAttribute(font : UIFont,texts:[String],Width:[Int]) -> (CGFloat,[NSAttributedStringKey : Any]) {
+    fileprivate func FindStringHeightWithAttribute(font : UIFont,texts:[String],Width:[Int]) -> (CGFloat,[NSAttributedStringKey : Any]) {
         let paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         paragraphStyle?.lineBreakMode = .byWordWrapping
         paragraphStyle?.alignment = .center
@@ -159,26 +162,26 @@ class VPDFTableCreation: NSObject {
         return (heights.max()!,attributes)
     }
     
-    private func FindStringHeight(font : UIFont,text:String,Width:CGFloat) -> CGFloat {
+    fileprivate func FindStringHeight(font : UIFont,text:String,Width:CGFloat) -> CGFloat {
         let paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         paragraphStyle?.lineBreakMode = .byWordWrapping
         paragraphStyle?.alignment = .center
         
         let attributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.paragraphStyle: paragraphStyle!] as [NSAttributedStringKey : Any]
-    
+        
         let stringSize = text.boundingRect(with: CGSize(width:CGFloat(Width), height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: attributes, context: nil).size
         return stringSize.height
     }
     
-    private func fontForPDF(withSize fontSize: Float) -> UIFont {
+    fileprivate func fontForPDF(withSize fontSize: Float) -> UIFont {
         return UIFont.systemFont(ofSize: CGFloat(fontSize))
     }
     
-    private func fontBoldForPDF(withSize fontSize: Float) -> UIFont {
+    fileprivate func fontBoldForPDF(withSize fontSize: Float) -> UIFont {
         return UIFont.boldSystemFont(ofSize: CGFloat(fontSize))
     }
     
-    private func drawLine(from: CGPoint, to: CGPoint) {
+    fileprivate func drawLine(from: CGPoint, to: CGPoint) {
         let context: CGContext? = UIGraphicsGetCurrentContext()
         context?.setLineWidth(1.0)
         context?.setStrokeColor(UIColor.black.cgColor)
@@ -187,9 +190,9 @@ class VPDFTableCreation: NSObject {
         context?.strokePath()
     }
     
-    
     //MARK: =================  Third Party Integration  =======================
-    private func ShowAlert(message:String,ViewController:UIViewController){
-       print(message)
+    fileprivate func ShowAlert(message:String,ViewController:UIViewController){
+        print(message)
     }
 }
+
