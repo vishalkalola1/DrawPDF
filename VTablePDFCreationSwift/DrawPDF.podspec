@@ -13,5 +13,6 @@ s.author           = { 'vishal patel' => 'vishalkalola196@gmail.com' }
 s.source           = { :git => 'https://github.com/vishalkalola1/DrawPDF.git', :tag => s.version }
 s.ios.deployment_target = '8.0'
 s.source_files = 'VPDFTableCreation/*.{swift}'
+s.resources     = ["VPDFTableCreation/*.png"]
 
 end
