@@ -10,7 +10,7 @@ DESC
 s.homepage         = 'https://github.com/vishalkalola1/DrawPDF.git'
 s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { 'vishal patel' => 'vishalkalola196@gmail.com' }
-s.source           = { :git => 'https://github.com/vishalkalola1/DrawPDF.git', :tag => s.version }
+s.source           = { :git => 'https://github.com/vishalkalola1/DrawPDF.git', :branch => "master"}
 s.source_files = 'VPDFTableCreation/*.{swift}'
 s.resources     = ["VPDFTableCreation/*.png"]
 
