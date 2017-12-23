@@ -190,9 +190,6 @@ class VPDFTableCreation: NSObject {
     
     //MARK: =================  Third Party Integration  =======================
     private func ShowAlert(message:String,ViewController:UIViewController){
-        HPAlertShow.sharedInstance.showStatusView(state: false, time: 8, addToView: ViewController, text: message, textFontColor: UIColor.white, textFontSize: 15.0, position: .Center, viewBackgroundColor: UIColor.black, viewOpacity: 0.5, viewCornerRadius: 10.0, viewBorderWidth: 2.0, viewBorderColor: UIColor.white) { (completed) in
-            if completed == true{
-            }
-        }
+       print(message)
     }
 }

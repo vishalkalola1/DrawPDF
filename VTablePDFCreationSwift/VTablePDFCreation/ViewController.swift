@@ -33,12 +33,12 @@ class ViewController: UIViewController,UIDocumentInteractionControllerDelegate {
         objPdfView.CreatePDFAndSaveDocumentDirectory(pdfName: "vishal", width: 500, height: 580)
         objPdfView.DrawPDF(TotalData:finalArray, headerData: arrHeaderArray, EachColumnWidth: [50,50,50,50,260], fontSize: 12.0, textAlignment: .center, Viewcontroller: self)
         let path1 = objPdfView.getPDFFile()
-        print(path1)
+        //print(path1)
         let objPdfView1 = VPDFTableCreation()
         objPdfView1.CreatePDFAndSaveDocumentDirectory(pdfName: "Kalola", width: 500, height: 580)
         objPdfView1.DrawPDF(TotalData:finalArray, headerData: arrHeaderArray, EachColumnWidth: [50,50,50,50,260], fontSize: 12.0, textAlignment: .center, Viewcontroller: self)
         let path = objPdfView1.getPDFFile() // optional code
-        print(path)
+        //print(path)
     }
     
     override func viewWillAppear(_ animated: Bool) {
