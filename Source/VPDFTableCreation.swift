@@ -19,7 +19,7 @@ public class VPDFTableCreation: NSObject {
     private var pageSize = CGSize()
     private var pdfPath = String()
     private var pageInfo = PageInfo()
-    
+    private var alignment : NSTextAlignment?
     //MARK: =================  PDF Creation  =======================
     
     public override init() {
@@ -74,6 +74,7 @@ public class VPDFTableCreation: NSObject {
     }
     
     open func DrawPDF(TotalData:[[String]],headerData:[String],EachColumnWidth:[Int], fontSize: Float, textAlignment alignment: NSTextAlignment,Viewcontroller:UIViewController)  {
+        self.alignment = alignment
         let sum = EachColumnWidth.reduce(0, +)
         if sum != Int(pageSize.width) - Int(pageInfo.PagePadding*2)
         {
@@ -127,12 +128,12 @@ public class VPDFTableCreation: NSObject {
                 isHeaderRequireFromSecondPage = false
                 let columnWidth = CGFloat(EachColumnWidth[columnCount])
                 xPOSEachString = columnCount == 0 ? pageInfo.PagePadding : (xPOSEachString + CGFloat(EachColumnWidth[columnCount-1]))
-                let stringHeight = FindStringHeight(font: font!, text: rowItem, Width: columnWidth)
+                let stringHeight = FindStringHeight(font: font!, text: rowItem, Width: columnWidth-pageInfo.ColumnDataPadding)
                 var yPOS = CGFloat()
                 if stringHeight < tupleSizeAndAttribute.0{
-                    yPOS = (tupleSizeAndAttribute.0/2) - (stringHeight/2) + yPOSEachString+pageInfo.ColumnDataPadding
+                    yPOS = (tupleSizeAndAttribute.0/2) - (stringHeight/2) + yPOSEachString + pageInfo.ColumnDataPadding
                 }else{
-                    yPOS = yPOSEachString+pageInfo.ColumnDataPadding
+                    yPOS = yPOSEachString + pageInfo.ColumnDataPadding
                 }
                 let rect = CGRect.init(x: xPOSEachString+pageInfo.ColumnDataPadding, y:yPOS, width:columnWidth-(pageInfo.ColumnDataPadding*2), height: tupleSizeAndAttribute.0)
                 drawText(rowItem, Frame:rect, withAttributes:tupleSizeAndAttribute.1)
@@ -148,14 +149,14 @@ public class VPDFTableCreation: NSObject {
     fileprivate func FindStringHeightWithAttribute(font : UIFont,texts:[String],Width:[Int]) -> (CGFloat,[NSAttributedStringKey : Any]) {
         let paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         paragraphStyle?.lineBreakMode = .byWordWrapping
-        paragraphStyle?.alignment = .center
+        paragraphStyle?.alignment = self.alignment!
         
         let attributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.paragraphStyle: paragraphStyle!] as [NSAttributedStringKey : Any]
         
         var heights = [CGFloat]()
         var i = 0
         for text in texts {
-            let stringSize = text.boundingRect(with: CGSize(width:CGFloat(Width[i]), height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: attributes, context: nil).size
+            let stringSize = text.boundingRect(with: CGSize(width:CGFloat(Width[i]) - pageInfo.ColumnDataPadding, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: attributes, context: nil).size
             heights.append(stringSize.height)
             i += 1
         }
@@ -165,7 +166,7 @@ public class VPDFTableCreation: NSObject {
     fileprivate func FindStringHeight(font : UIFont,text:String,Width:CGFloat) -> CGFloat {
         let paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         paragraphStyle?.lineBreakMode = .byWordWrapping
-        paragraphStyle?.alignment = .center
+        paragraphStyle?.alignment = self.alignment!
         
         let attributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.paragraphStyle: paragraphStyle!] as [NSAttributedStringKey : Any]
         
